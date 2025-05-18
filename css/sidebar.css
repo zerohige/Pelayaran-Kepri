@@ -1,7 +1,7 @@
 /* Sidebar */
 .sidebar {
     width: 250px;
-    background-color:#34495e;
+    background-color:#2C3E50;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -20,7 +20,7 @@
 
 /* Sidebar Menu Item */
 .sidebar-menu li {
-    border-bottom: 1px solid #34495e; /* Border lebih halus */
+    border-bottom: 1px solid #2C3E50; /* Border lebih halus */
 }
 
 /* Sidebar Menu Link */
@@ -36,6 +36,7 @@
 /* Sidebar Menu Link Hover / Active */
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
+    background-color: #61A5D4;
     color: white;
     font-weight: bold;
 }
