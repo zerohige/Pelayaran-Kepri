@@ -1,0 +1,66 @@
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color:#34495e;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 60px; /* Menyesuaikan dengan tinggi header */
+    overflow-y: auto;
+    z-index: 999;
+    transition: all 0.3s ease; /* Animasi transisi saat sidebar ditampilkan/dihilangkan */
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Sidebar Menu Item */
+.sidebar-menu li {
+    border-bottom: 1px solid #34495e; /* Border lebih halus */
+}
+
+/* Sidebar Menu Link */
+.sidebar-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: #ecf0f1; /* Warna Teks yang lebih terang */
+    text-decoration: none;
+    font-weight: 500; /* Sedikit lebih tebal untuk memberi kesan profesional */
+    transition: all 0.3s ease;
+}
+
+/* Sidebar Menu Link Hover / Active */
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    color: white;
+    font-weight: bold;
+}
+
+/* Sidebar Menu Icons */
+.sidebar-menu i {
+    margin-right: 10px;
+}
+
+/* Sidebar Menu Link Icon Only */
+.sidebar-menu a i {
+    font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%); /* Menyembunyikan sidebar pada ukuran layar kecil */
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar-menu a {
+        font-size: 14px;
+    }
+}
