@@ -1,7 +1,7 @@
 <?php
 // admin.php - Halaman login admin
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Jika sudah login, redirect ke dashboard
 if (isset($_SESSION['admin_id'])) {
@@ -54,14 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - Pelayaran Kepri</title>
-    <link rel="stylesheet" href="../css/main_admin_&_reservasi.css">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../../css/main_admin_&_reservasi.css">
+    <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
     <!-- Header dengan Logo -->
     <div class="header">
         <div class="logo-container">
-            <img src="../gambar/logo.png" alt="Logo">
+            <img src="../../gambar/logo.png" alt="Logo">
             <div class="title">Pelayaran Kepri</div>
         </div>
     </div>
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             
             <div class="back-link">
-                <a href="../index.php">Kembali ke Beranda</a>
+                <a href="../../index.php">Kembali ke Beranda</a>
             </div>
         </div>
     </div>

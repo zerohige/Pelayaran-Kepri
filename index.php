@@ -31,8 +31,8 @@ if ($result->num_rows > 0) {
             <div class="title">Pelayaran Kepri</div>
         </div>
         <div class="header-buttons">
-            <a href="cek_reservasi.php" class="check-reservation">Cek Reservasi</a>
-            <a href="admin/admin.php" class="admin">ADMIN</a>
+            <a href="view/user/cek_reservasi.php" class="check-reservation">Cek Reservasi</a>
+            <a href="view/admin/admin.php" class="admin">ADMIN</a>
         </div>
     </div>
 
@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
             <div class="selection-title">PILIH LOKASI ANDA :</div>
             <div class="location-buttons">
                 <?php foreach ($locations as $location): ?>
-                    <a href="form.php?lokasi_id=<?php echo $location['id']; ?>&lokasi=<?php echo urlencode($location['name']); ?>" class="location-button"><?php echo $location['name']; ?></a>
+                    <a href="view/user/form.php?lokasi_id=<?php echo $location['id']; ?>&lokasi=<?php echo urlencode($location['name']); ?>" class="location-button"><?php echo $location['name']; ?></a>
                 <?php endforeach; ?>
             </div>
         </div>

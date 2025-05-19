@@ -1,7 +1,7 @@
 <?php
 // admin_dashboard.php - Dashboard admin (Fixed)
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Cek apakah admin sudah login
 if (!isset($_SESSION['admin_id'])) {
@@ -56,6 +56,8 @@ try {
 } catch (Exception $e) {
     $stats['jadwal_aktif'] = 'N/A';
 }
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -63,157 +65,16 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-
-        /* Stats Cards */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: bold;
-            color: #0a2259;
-            margin: 10px 0;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Welcome Section */
-        .welcome-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .welcome-title {
-            color: #0a2259;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .welcome-text {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .action-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .action-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .action-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .action-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #0a2259;
-            margin-bottom: 10px;
-        }
-
-        .action-description {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .action-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .action-btn:hover {
-            background-color: #083048;
-        }
-
-        /* Alert untuk database incomplete */
-        .alert {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/admin_dashboard.css">
 </head>
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/header.css">
 
 <body>
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-            <img src="../gambar/logo.png" alt="Logo">
+            <img src="../../gambar/logo.png" alt="Logo">
             <div class="header-title">Admin Panel - Pelayaran Kepri</div>
         </div>
         <div class="admin-info">

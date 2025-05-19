@@ -1,7 +1,7 @@
 <?php
 // admin_laporan.php - Halaman laporan
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Cek apakah admin sudah login
 if (!isset($_SESSION['admin_id'])) {
@@ -80,6 +80,8 @@ $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $popular_routes[] = $row;
 }
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -87,228 +89,15 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan - Admin Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page-title {
-            color: #0a2259;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        /* Filter Section */
-        .filter-section {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .filter-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            align-items: end;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filter-group label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .filter-group input,
-        .filter-group select {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .filter-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: bold;
-            color: #0a2259;
-            margin: 10px 0;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .stat-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        /* Report Cards */
-        .report-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
-        }
-
-        .report-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .report-header {
-            background-color: #0a2259;
-            color: white;
-            padding: 15px 20px;
-            font-weight: bold;
-        }
-
-        .report-content {
-            padding: 20px;
-        }
-
-        .report-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .report-table th,
-        .report-table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .report-table th {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .no-data {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* Chart Container */
-        .chart-container {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .chart-title {
-            color: #0a2259;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* Print Button */
-        .print-section {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .print-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* CSS untuk print */
-        @media print {
-            /* Sembunyikan elemen header dan sidebar */
-            .header, .sidebar, .print-section {
-                display: none;
-            }
-
-            /* Atur konten agar pas di halaman cetak */
-            .main-content {
-                margin-left: 0;
-                padding: 10px;
-            }
-
-            /* Sesuaikan ukuran font dan layout jika perlu */
-            .report-table th, .report-table td {
-                font-size: 12px;
-                padding: 8px;
-            }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .report-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/admin_laporan.css">
 </head>
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/header.css">
 <body>
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-            <img src="../gambar/logo.png" alt="Logo">
+            <img src="../../gambar/logo.png" alt="Logo">
             <div class="header-title">Admin Panel - Pelayaran Kepri</div>
         </div>
         <div class="admin-info">

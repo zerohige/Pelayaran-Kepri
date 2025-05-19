@@ -1,7 +1,7 @@
 <?php
 // update_reservation_status.php - Update status expired reservations
 // Dijalankan melalui cron job setiap hari: php /path/to/update_reservation_status.php
-require_once '../../controller/db_connection.php';
+require_once '../controller/db_connection.php';
 
 // Cari reservasi yang belum dibayar dan sudah melewati batas waktu (1 hari sebelum keberangkatan)
 $query = "UPDATE reservations 

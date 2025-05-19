@@ -1,7 +1,7 @@
 <?php
 // admin_detail_reservasi.php - Detail reservasi
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Cek apakah admin sudah login
 if (!isset($_SESSION['admin_id'])) {
@@ -80,6 +80,8 @@ if (isset($_GET['error'])) {
             break;
     }
 }
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -87,223 +89,15 @@ if (isset($_GET['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Reservasi - Admin Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page-title {
-            color: #0a2259;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .back-btn {
-            background-color:rgb(16, 83, 25);
-            color: white;
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        /* Detail Container */
-        .detail-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .detail-header {
-            background-color: #0a2259;
-            color: white;
-            padding: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .detail-content {
-            padding: 30px;
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .detail-section {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .section-title {
-            color: #0a2259;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #0a2259;
-            padding-bottom: 5px;
-        }
-
-        .detail-row {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .detail-label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .detail-value {
-            color: #666;
-        }
-
-        .passengers-section {
-            background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .passenger-card {
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .passenger-name {
-            font-weight: bold;
-            color: #0a2259;
-            margin-bottom: 10px;
-        }
-
-        .status-badge {
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-paid {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .status-expired {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        .print-section {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #dee2e6;
-        }
-
-        .print-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 5px;
-        }
-
-        .delete-btn {
-            background-color: #dc3545;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 5px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .btn-primary {
-            background-color: #0a2259;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .message {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .message.success {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-
-        .message.error {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/admin_detail_reservasi.css">
 </head>
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/header.css">
 <body>
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-            <img src="../gambar/logo.png" alt="Logo">
+            <img src="../../gambar/logo.png" alt="Logo">
             <div class="header-title">Admin Panel - Pelayaran Kepri</div>
         </div>
         <div class="admin-info">
@@ -325,7 +119,7 @@ if (isset($_GET['error'])) {
     <!-- Main Content -->
     <div class="main-content">
         <a href="admin_reservasi.php" class="back-btn">
-            <img src="../gambar/left.png" alt="Kembali" style="width: 16px; vertical-align: middle; margin-right: 4px;">
+            <img src="../../gambar/left.png" alt="Kembali" style="width: 16px; vertical-align: middle; margin-right: 4px;">
             Kembali ke Data Reservasi
         </a>
         
@@ -415,7 +209,7 @@ if (isset($_GET['error'])) {
                     <!-- Update Status Pembayaran -->
                     <div class="detail-section">
                         <div class="section-title">Update Status Pembayaran</div>
-                        <form method="POST" action="model/admin_update_status.php">
+                        <form method="POST" action="../../model/admin_update_status.php">
                             <input type="hidden" name="reservation_id" value="<?php echo $reservation['id']; ?>">
                             <div class="form-group">
                                 <label for="status">Status Pembayaran:</label>
@@ -452,8 +246,8 @@ if (isset($_GET['error'])) {
 
                 <!-- Action Buttons -->
                 <div class="print-section">
-                    <a href="../generate_ticket_pdf.php?id=<?php echo $reservation['id']; ?>" class="print-btn">🖨️ Cetak Tiket</a>
-                    <a href="model/admin_delete_reservasi.php?id=<?php echo $reservation['id']; ?>" 
+                    <a href="../../model/generate_ticket_pdf.php?id=<?php echo $reservation['id']; ?>" class="print-btn">🖨️ Cetak Tiket</a>
+                    <a href="../../model/admin_delete_reservasi.php?id=<?php echo $reservation['id']; ?>" 
                        class="delete-btn" 
                        onclick="return confirm('Yakin ingin menghapus reservasi ini? Tindakan ini tidak dapat dibatalkan.')">
                         🗑️ Hapus Reservasi

@@ -1,7 +1,7 @@
 <?php
 // admin_jadwal.php - Halaman kelola jadwal kapal
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Cek apakah admin sudah login
 if (!isset($_SESSION['admin_id'])) {
@@ -96,6 +96,8 @@ $result = $conn->query($query);
 while ($row = $result->fetch_assoc()) {
     $schedules[] = $row;
 }
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -103,181 +105,15 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Jadwal Kapal - Admin Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page-title {
-            color: #0a2259;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        /* Message */
-        .message {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .message.success {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-
-        .message.error {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-
-        /* Form Section */
-        .form-section {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .form-title {
-            color: #0a2259;
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .submit-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        /* Table */
-        .table-container {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table th {
-            background-color: #0a2259;
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .table tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        .action-btn {
-            padding: 5px 10px;
-            margin: 2px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-active {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .no-data {
-            text-align: center;
-            padding: 50px;
-            color: #666;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/admin_jadwal.css">
 </head>
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/header.css">
 <body>
     <!-- Header -->
     <div class="header">
         <div class="logo-container">
-            <img src="../gambar/logo.png" alt="Logo">
+            <img src="../../gambar/logo.png" alt="Logo">
             <div class="header-title">Admin Panel - Pelayaran Kepri</div>
         </div>
         <div class="admin-info">

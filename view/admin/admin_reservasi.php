@@ -1,7 +1,7 @@
 <?php
 // admin_reservasi.php - Halaman data reservasi
 session_start();
-require_once '../controller/db_connection.php';
+require_once '../../controller/db_connection.php';
 
 // Cek apakah admin sudah login
 if (!isset($_SESSION['admin_id'])) {
@@ -80,6 +80,8 @@ if (!empty($params)) {
 }
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -87,202 +89,15 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Reservasi - Admin Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
-        }
-
-        .page-title {
-            color: #0a2259;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        /* Message */
-        .message {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .message.success {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-        }
-
-        .message.error {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-
-        /* Filter Section */
-        .filter-section {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-
-        .filter-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            align-items: end;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filter-group label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .filter-group input,
-        .filter-group select {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .filter-btn {
-            background-color: #0a2259;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .reset-btn {
-            background-color: #dc3545;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        /* Table */
-        .table-container {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .table th {
-            background-color: #0a2259;
-            color: white;
-            padding: 15px;
-            text-align: left;
-            font-weight: bold;
-        }
-
-        .table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .table tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        .action-btn {
-            padding: 5px 10px;
-            margin: 2px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-detail {
-            background-color: #17a2b8;
-            color: white;
-        }
-
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .status-paid {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .status-expired {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .no-data {
-           text-align: center;
-           padding: 50px;
-           color: #666;
-       }
-
-       /* Responsive */
-       @media (max-width: 768px) {
-           .sidebar {
-               transform: translateX(-100%);
-           }
-           
-           .main-content {
-               margin-left: 0;
-           }
-           
-           .table-container {
-               overflow-x: auto;
-           }
-       }
-   </style>
+    <link rel="stylesheet" href="../../css/admin_reservasi.css">
 </head>
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/header.css">
 <body>
    <!-- Header -->
    <div class="header">
        <div class="logo-container">
-           <img src="../gambar/logo.png" alt="Logo">
+           <img src="../../gambar/logo.png" alt="Logo">
            <div class="header-title">Admin Panel - Pelayaran Kepri</div>
        </div>
        <div class="admin-info">
@@ -378,7 +193,7 @@ $result = $stmt->get_result();
                                </td>
                                <td>
                                    <a href="admin_detail_reservasi.php?id=<?php echo $row['id']; ?>" class="action-btn btn-detail">Detail</a>
-                                   <a href="model/admin_delete_reservasi.php?id=<?php echo $row['id']; ?>" 
+                                   <a href="../../model/admin_delete_reservasi.php?id=<?php echo $row['id']; ?>" 
                                       class="action-btn btn-delete" 
                                       onclick="return confirm('Yakin ingin menghapus reservasi ini?')">Hapus</a>
                                </td>
