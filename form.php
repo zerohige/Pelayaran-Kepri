@@ -112,8 +112,8 @@ if ($result->num_rows > 0) {
             color: white;
         }
 
-        /* Content Container */
-        /* Content Container */
+
+    
 .content-container {
     margin-top: 20px; /* Menambah jarak atas untuk memberi ruang */
     width: 100%; /* Memperbesar lebar form untuk tampilan yang lebih luas */
@@ -133,6 +133,7 @@ if ($result->num_rows > 0) {
     text-align: center;
     font-size: 22px; /* Menambah ukuran font */
     font-weight: bold;
+    border-radius: 10px;
 }
 
 /* Form Content */
