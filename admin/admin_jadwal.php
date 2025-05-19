@@ -34,20 +34,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
     }
     
-    if ($_POST['action'] === 'delete') {
+        if ($_POST['action'] === 'delete') {
         $schedule_id = $_POST['schedule_id'];
-        
-        $stmt = $conn->prepare("DELETE FROM ship_schedules WHERE id = ?");
+
+        // Cek apakah ada reservasi yang memakai schedule_id ini
+        $stmt = $conn->prepare("SELECT COUNT(*) FROM reservations WHERE schedule_id = ?");
         $stmt->bind_param("i", $schedule_id);
-        
-        if ($stmt->execute()) {
-            $message = 'Jadwal berhasil dihapus';
-            $message_type = 'success';
-        } else {
-            $message = 'Gagal menghapus jadwal';
+        $stmt->execute();
+        $stmt->bind_result($reservation_count);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($reservation_count > 0) {
+            // Jangan hapus, tampilkan peringatan
+            $message = 'Jadwal tidak bisa dihapus karena masih digunakan dalam reservasi.';
             $message_type = 'error';
+        } else {
+            // Aman untuk dihapus
+            $stmt = $conn->prepare("DELETE FROM ship_schedules WHERE id = ?");
+            $stmt->bind_param("i", $schedule_id);
+
+            if ($stmt->execute()) {
+                $message = 'Jadwal berhasil dihapus';
+                $message_type = 'success';
+            } else {
+                $message = 'Terjadi kesalahan saat menghapus jadwal.';
+                $message_type = 'error';
+            }
         }
     }
+
 }
 
 // Ambil data untuk form
