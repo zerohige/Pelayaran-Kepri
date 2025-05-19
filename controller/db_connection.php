@@ -89,7 +89,7 @@ function validateAdminLogin($conn, $username, $password) {
 function requireAdminLogin() {
     session_start();
     if (!isset($_SESSION['admin_id'])) {
-        header('Location: admin.php');
+        header('Location: ../admin/admin.php');
         exit;
     }
 }
