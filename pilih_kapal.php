@@ -136,12 +136,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     Silakan pilih tanggal lain atau hubungi admin untuk informasi jadwal lebih lanjut.
                 </p>
                 <div style="text-align: center;">
-                    <a href="form.php?lokasi_id=<?php echo $lokasi_id; ?>&lokasi=<?php echo urlencode($lokasi); ?>" class="back-button">
-                        ← Pilih Tanggal Lain
-                    </a>
-                    <a href="index.php" class="back-button">
-                        🏠 Kembali ke Beranda
-                    </a>
+                    <div class="nav-links">
+                        <a href="form.php?lokasi_id=<?php echo $lokasi_id; ?>&lokasi=<?php echo urlencode($lokasi); ?>" class="back-button">
+                            <img src="gambar/left.png" alt="Kembali" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                            Pilih Tanggal Lain
+                        </a>
+    
+                        <a href="index.php" class="back-button">
+                            🏠 Kembali ke Beranda
+                        </a>
+                    </div>
+
                 </div>
             </div>
         <?php else: ?>
