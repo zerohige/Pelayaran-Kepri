@@ -1,7 +1,6 @@
 <?php
-// generate_ticket_pdf.php - Generate PDF tiket reservasi
 require_once 'controller/db_connection.php';
-require_once 'fpdf/fpdf.php'; // Pastikan library FPDF sudah diinstal
+require_once 'fpdf/fpdf.php';
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: index.php');
@@ -10,16 +9,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $reservation_id = (int)$_GET['id'];
 
-// Ambil data reservasi
-$query = "SELECT r.*, r.kode AS kode_reservasi,
-          o.name AS origin_name, d.name AS destination_name, 
-          s.name AS ship_name, s.price AS ship_price
-          FROM reservations r
-          JOIN locations o ON r.origin_id = o.id
-          JOIN locations d ON r.destination_id = d.id
-          JOIN ships s ON r.ship_id = s.id
-          WHERE r.id = ?";
-
+$query = "SELECT r.*, r.kode AS kode_reservasi, o.name AS origin_name, d.name AS destination_name, s.name AS ship_name, s.price AS ship_price FROM reservations r JOIN locations o ON r.origin_id = o.id JOIN locations d ON r.destination_id = d.id JOIN ships s ON r.ship_id = s.id WHERE r.id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $reservation_id);
 $stmt->execute();
@@ -32,7 +22,6 @@ if ($result->num_rows === 0) {
 
 $reservation = $result->fetch_assoc();
 
-// Get passenger details
 $query = "SELECT * FROM passengers WHERE reservation_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $reservation_id);
@@ -44,20 +33,32 @@ while ($row = $passengers_result->fetch_assoc()) {
     $passengers[] = $row;
 }
 
-// Hitung batas waktu pembayaran (1 hari sebelum keberangkatan)
 $departure_date = new DateTime($reservation['departure_date']);
 $payment_deadline = clone $departure_date;
 $payment_deadline->modify('-1 day');
 
-// Generate PDF
 $pdf = new FPDF();
 $pdf->AddPage();
 
-// Header
-$pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(0, 10, 'TIKET RESERVASI PELAYARAN KEPRI', 0, 1, 'C');
+// Header dengan logo dan teks di kiri atas
+$pdf->Image('gambar/logo1.png', 10, 8, 20); // Pastikan logo berukuran kecil dan sesuai path-nya
+
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->SetXY(28, 10); // Geser teks ke kanan agar tidak menimpa logo
+$pdf->Cell(0, 7, 'Pelayaran Kepri', 0, 1, 'L');
+
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 10, 'KODE RESERVASI: ' . $reservation['kode_reservasi'], 0, 1, 'C');
+$pdf->SetX(28);
+$pdf->Cell(0, 7, 'TIKET RESERVASI', 0, 1, 'L');
+
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetX(160); // Mengatur posisi X ke sebelah kanan untuk kode reservasi
+$pdf->Cell(0, 7, 'KODE RESERVASI: ' . $reservation['kode_reservasi'], 0, 1, 'R'); // 'R' untuk rata kanan
+
+// Garis bawah
+$pdf->SetLineWidth(0.5);
+$pdf->Line(10, $pdf->GetY() + 2, 200, $pdf->GetY() + 2);
+$pdf->Ln(10); // Jarak setelah header
 $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
 $pdf->Ln(5);
 
@@ -84,8 +85,9 @@ $pdf->SetFont('Arial', '', 10);
 foreach ($passengers as $index => $passenger) {
     $pdf->Cell(10, 7, ($index + 1) . '.', 0);
     $pdf->Cell(80, 7, $passenger['name'], 0);
-    $pdf->Cell(40, 7, 'KTP: ' . $passenger['ktp_number'], 0);
-    $pdf->Cell(0, 7, 'HP: ' . $passenger['phone_number'], 0, 1);
+    $pdf->Cell(40, 7, 'No. KTP: ' . $passenger['ktp_number'], 0);
+    $pdf->Cell(15, 7, '', 0); // Tambahkan Cell kosong untuk jarak
+    $pdf->Cell(0, 7, 'No. HP: ' . $passenger['phone_number'], 0, 1);
 }
 $pdf->Ln(5);
 
