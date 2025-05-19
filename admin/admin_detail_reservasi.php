@@ -109,7 +109,7 @@ if (isset($_GET['error'])) {
         }
 
         .back-btn {
-            background-color: #6c757d;
+            background-color:rgb(16, 83, 25);
             color: white;
             padding: 8px 15px;
             text-decoration: none;
@@ -324,7 +324,10 @@ if (isset($_GET['error'])) {
 
     <!-- Main Content -->
     <div class="main-content">
-        <a href="admin_reservasi.php" class="back-btn">← Kembali ke Data Reservasi</a>
+        <a href="admin_reservasi.php" class="back-btn">
+            <img src="../gambar/left.png" alt="Kembali" style="width: 16px; vertical-align: middle; margin-right: 4px;">
+            Kembali ke Data Reservasi
+        </a>
         
         <h1 class="page-title">Detail Reservasi</h1>
 
