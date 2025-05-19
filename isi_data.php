@@ -1,6 +1,6 @@
 <?php
 // isi_data.php - Halaman pengisian data penumpang
-require_once 'db_connection.php';
+require_once 'controller/db_connection.php';
 
 // Start session
 session_start();
@@ -70,6 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Ambil data penumpang yang mungkin sudah diisi sebelumnya
 $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,200 +79,16 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isi Data Penumpang - Pelayaran Kepri</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0a2259;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url('gambar/background.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Header Styling */
-        .header {
-            width: 100%;
-            display: flex;
-            padding: 20px;
-            box-sizing: border-box;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 70px;
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Progress Container */
-    /* Progress Container */
-    .progress-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        max-width: 600px; /* Memperbesar lebar maksimal */
-        margin: 24px 0; /* Memperbesar margin atas dan bawah */
-        background-color: white;
-        border-radius: 25px;
-        padding: 18px; /* Memperbesar padding */
-    }
-
-    /* Progress Step */
-    .progress-step {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-    }
-
-    /* Step Circle */
-    .step-circle {
-        width: 36px; /* Memperbesar ukuran lingkaran */
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 8px; /* Memperbesar jarak bawah */
-        font-weight: bold;
-        color: white;
-        font-size: 18px; /* Memperbesar ukuran font */
-    }
-
-    /* Active Step */
-    .step-active {
-        background-color: #0a2259;
-    }
-
-    /* Inactive Step */
-    .step-inactive {
-        background-color: #ccc;
-    }
-
-    /* Step Text */
-    .step-text {
-        font-size: 16px; /* Memperbesar ukuran font teks langkah */
-        color: #666;
-    }
-
-    /* Progress Line */
-    .progress-line {
-        height: 4px; /* Memperbesar ketebalan garis progress */
-        background-color: #ccc;
-        flex: 1;
-        margin: 0 10px; /* Memperbesar jarak antara garis dan langkah */
-    }
-
-    /* Page Title */
-    /* Page Title */
-/* Page Title */
-    .page-title {
-        color: white;
-        font-size: 18px; /* Mengurangi ukuran font 20% lebih kecil */
-        text-align: center;
-        font-weight: bold;
-        margin: 12px 0 18px; /* Mengurangi margin lebih kecil */
-    }
-
-    /* Content Container */
-    .content-container {
-        width: 90%;
-        max-width: 430px; /* Mengurangi lebar maksimal 20% lebih kecil */
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        margin-bottom: 18px; /* Mengurangi jarak bawah */
-        overflow: hidden;
-        padding: 18px; /* Mengurangi padding lebih kecil */
-    }
-
-    /* Passenger Header */
-    .passenger-header {
-        background-color: #0a2259;
-        color: white;
-        padding: 14px; /* Mengurangi padding lebih kecil */
-        font-size: 16px; /* Mengurangi ukuran font */
-        font-weight: bold;
-        text-align: center;
-    }
-
-    /* Form Container */
-    .form-container {
-        padding: 18px; /* Mengurangi padding lebih kecil */
-    }
-
-    /* Form Group */
-    .form-group {
-        margin-bottom: 14px; /* Mengurangi jarak antar form */
-    }
-
-    /* Form Group Label */
-    .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 6px; /* Mengurangi jarak bawah label */
-        color: #333;
-        font-size: 14px; /* Mengurangi ukuran font label */
-    }
-
-    /* Form Group Input */
-    .form-group input {
-        width: 100%;
-        padding: 9px; /* Mengurangi padding input lebih kecil */
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 14px; /* Mengurangi ukuran font input */
-        box-sizing: border-box;
-    }
-
-    /* Submit Button */
-    .submit-btn {
-        background-color: #0a2259;
-        color: white;
-        border: none;
-        padding: 10px 18px; /* Mengurangi padding tombol lebih kecil */
-        border-radius: 20px; /* Memperbesar radius tombol */
-        font-size: 16px; /* Mengurangi ukuran font tombol */
-        font-weight: bold;
-        cursor: pointer;
-        float: right;
-        margin-top: 18px; /* Mengurangi jarak atas tombol */
-        margin-bottom: 18px; /* Mengurangi jarak bawah tombol */
-    }
-
-    /* Error Message */
-    .error-message {
-        color: #d9534f;
-        background-color: #f9f2f2;
-        border-left: 3px solid #d9534f;
-        padding: 9px; /* Mengurangi padding pesan error */
-        margin-bottom: 14px; /* Mengurangi jarak bawah pesan error */
-        font-size: 14px; /* Mengurangi ukuran font pesan error */
-    }
-
-    </style>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/isi_data.css">
 </head>
 <body>
     <!-- Header with Logo -->
     <div class="header">
         <div class="logo-container">
-            <img src="gambar/logo.png" alt="Logo">
+            <a href="index.php">
+                <img src="gambar/logo.png" alt="Logo">
+            </a>
             <div class="title">Pelayaran Kepri</div>
         </div>
     </div>

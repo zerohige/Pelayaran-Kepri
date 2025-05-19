@@ -1,6 +1,6 @@
 <?php
 // generate_ticket_pdf.php - Generate PDF tiket reservasi
-require_once 'db_connection.php';
+require_once 'controller/db_connection.php';
 require_once 'fpdf/fpdf.php'; // Pastikan library FPDF sudah diinstal
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {

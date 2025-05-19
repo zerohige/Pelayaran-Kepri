@@ -1,6 +1,6 @@
 <?php
 // tiket.php - Halaman tiket
-require_once 'db_connection.php';
+require_once 'controller/db_connection.php';
 
 // Start session
 session_start();

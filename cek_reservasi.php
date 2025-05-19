@@ -1,6 +1,6 @@
 <?php
 // cek_reservasi.php - Halaman cek reservasi
-require_once 'db_connection.php';
+require_once 'controller/db_connection.php';
 
 $reservation = null;
 $error = null;
@@ -55,6 +55,8 @@ $payment_deadline = '';
 if ($reservation) {
     $payment_deadline = date('d F Y', strtotime($reservation['departure_date'] . ' -1 day'));
 }
+
+// Halaman website
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,226 +64,21 @@ if ($reservation) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cek Reservasi - Pelayaran Kepri</title>
+    <link rel="stylesheet" href="css/main_admin_&_reservasi.css">
+    <link rel="stylesheet" href="css/cek_reservasi.css">
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0a2259;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-image: url('gambar/background.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Header Styling */
-        .header {
-            width: 100%;
-            display: flex;
-            padding: 20px;
-            box-sizing: border-box;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            height: 70px;
-            width: auto;
-            margin-right: 10px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-
-        /* Form Container */
-        .form-container {
-            width: 90%;
-            max-width: 500px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            padding: 20px;
-        }
-
-        .form-title {
-            color: #0a2259;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .search-form {
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-input {
-            flex-grow: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .search-btn {
-            background-color: #0a2259;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .error-message {
-            color: #d9534f;
-            background-color: #f9f2f2;
-            border-left: 3px solid #d9534f;
-            padding: 10px;
-            margin: 15px 0;
-        }
-
-        /* Ticket Container */
-        .ticket-container {
-            width: 90%;
-            max-width: 500px;
-            background-color: white;
-            border:2px solid white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            overflow: hidden;
-            display: <?php echo $reservation ? 'block' : 'none'; ?>;
-        }
-
-        .ticket-header {
-            background-color: #0a2259;
-            color: white;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .ticket-content {
-            padding: 20px;
-        }
-
-        .reservation-details {
-            margin-bottom: 20px;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .detail-label {
-            font-weight: bold;
-            color: #666;
-        }
-
-        .detail-value {
-            text-align: right;
-        }
-
-        .passenger-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin: 15px 0 10px;
-            color: #333;
-        }
-
-        .passenger-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .passenger-list li {
-            padding: 5px 0;
-            font-size: 14px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #0a2259;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 20px;
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .download-icon {
-            margin-left: 8px;
-            font-size: 18px;
-        }
-
-        /* Button to return to home */
-        .home-btn {
-            background-color: #0a2259;
-            color: white;
-            border: 2px solid white;
-            padding: 14px 24px; /* Memperbesar padding tombol */
-            border-radius: 20px;
-            font-size: 16px; /* Memperbesar ukuran font tombol */
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px; /* Memperbesar margin atas tombol */
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .payment-info {
-            background-color: #fff3cd; 
-            border: 1px solid #ffeeba; 
-            color: #856404; 
-            padding: 10px; 
-            margin: 15px 0; 
-            border-radius: 5px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .status-paid {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .status-expired {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
+    /* Ticket Container */
+    .ticket-container {
+        width: 90%;
+        max-width: 500px;
+        background-color: white;
+        border:2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        overflow: hidden;
+        display: <?php echo $reservation ? 'block' : 'none'; ?>;
+    }
     </style>
 </head>
 <body>
