@@ -39,62 +39,62 @@ body {
 
 
 .content-container {
-    margin-top: 20px; /* Menambah jarak atas untuk memberi ruang */
-    width: 100%; /* Memperbesar lebar form untuk tampilan yang lebih luas */
-    max-width: 600px; /* Memperbesar ukuran maksimal form */
+    margin-top: 20px; 
+    width: 100%; 
+    max-width: 600px; 
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Memberikan bayangan yang lebih soft */
-    padding: 30px; /* Menambah padding untuk ruang sekitar form */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+    padding: 30px; 
 }
 
 /* Location Header */
 .location-header {
     background-color: #0a2259;
     color: white;
-    padding: 20px; /* Menambah padding agar lebih besar */
+    padding: 20px; 
     text-align: center;
-    font-size: 22px; /* Menambah ukuran font */
+    font-size: 22px; 
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 30px;
 }
 
 /* Form Content */
 .form-content {
-    padding: 30px; /* Menambah padding dalam form */
+    padding: 30px; 
 }
 
 /* Form Instruction */
 .form-instruction {
     text-align: center;
     color: #666;
-    margin-bottom: 10px; /* Menambah jarak bawah */
-    font-size: 16px; /* Memperbesar ukuran font */
+    margin-bottom: 30px; 
+    font-size: 16px; 
 }
 
 /* Form Group */
 .form-group {
-    margin-bottom: 25px; /* Menambah jarak bawah antara input */
+    margin-bottom: 25px; 
 }
 
 /* Label styling */
 .form-group label {
     display: block;
-    margin-bottom: 10px; /* Menambah jarak bawah label */
+    margin-bottom: 10px;
     font-weight: bold;
     color: #333;
-    font-size: 18px; /* Memperbesar ukuran font label */
+    font-size: 18px; 
 }
 
 /* Input and Select Styling */
 .form-group select, 
 .form-group input {
     width: 100%;
-    padding: 8px; /* Mengurangi padding input dan select */
+    padding: 8px; 
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 14px; /* Menurunkan ukuran font */
+    font-size: 14px; 
     box-sizing: border-box;
 }
 
@@ -103,19 +103,19 @@ body {
     background-color: #0a2259;
     color: white;
     border: none;
-    padding: 10px 20px; /* Mengurangi padding tombol */
+    padding: 10px 20px; 
     border-radius: 20px;
-    font-size: 20px; /* Menurunkan ukuran font tombol */
+    font-size: 20px; 
     font-weight: bold;
     cursor: pointer;
     width: 60%;
-    margin: 15px auto; /* Mengurangi jarak atas tombol */
+    margin: 15px auto; 
     display: block;
 }
 
 /* Submit Button Hover Effect */
 .submit-btn:hover {
-    background-color: #073b8c; /* Menambah efek hover dengan warna lebih gelap */
+    background-color: #073b8c; 
 }
 
 /* Error Message */
@@ -124,6 +124,6 @@ body {
     background-color: #f9f2f2;
     border-left: 3px solid #d9534f;
     padding: 8px;
-    margin-bottom: 10px; /* Mengurangi jarak bawah untuk error */
-    font-size: 14px; /* Menurunkan ukuran font pada error message */
+    margin-bottom: 10px; 
+    font-size: 14px; 
 }

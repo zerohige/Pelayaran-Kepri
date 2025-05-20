@@ -75,29 +75,28 @@ body {
     box-sizing: border-box;
 }
 
-/* Location Selection */
-/* Location Selection */
+
 .location-selection {
     background-color: rgba(10, 34, 89, 0.8);
-    border-radius: 10px;
-    padding: 50px 30px; /* Menambah padding di sekitar konten */
+    border-radius: 15px;
+    padding: 50px 30px; 
     width: 80%;
     max-width: 800px;
     text-align: center;
-    margin-top: 200px; /* Menambahkan margin atas untuk menurunkan posisi */
+    margin-top: 200px; 
 }
 
 .selection-title {
     color: white;
-    font-size: 24px; /* Menambah ukuran font */
+    font-size: 24px; 
     font-weight: bold;
-    margin-bottom: 30px; /* Menambah jarak bawah */
+    margin-bottom: 30px; 
 }
 
 .location-buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px; /* Menambah jarak antar tombol */
+    gap: 20px; 
 }
 
 .location-button {
@@ -105,16 +104,16 @@ body {
     color: #0a2259;
     border: none;
     border-radius: 20px;
-    padding: 15px; /* Menambah padding untuk tombol lebih besar */
+    padding: 15px; 
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-    font-size: 18px; /* Menambah ukuran font tombol */
+    font-size: 18px;
     transition: transform 0.2s, background-color 0.2s;
 }
 
 .location-button:hover {
-    transform: scale(1.1); /* Membuat tombol lebih besar saat dihover */
+    transform: scale(1.05); 
     background-color: #f0f0f0;
 }
 

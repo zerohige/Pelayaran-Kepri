@@ -8,7 +8,7 @@
     top: 60px; /* Menyesuaikan dengan tinggi header */
     overflow-y: auto;
     z-index: 999;
-    transition: all 0.3s ease; /* Animasi transisi saat sidebar ditampilkan/dihilangkan */
+    transition: all 0.3s ease; 
 }
 
 /* Sidebar Menu */
@@ -20,25 +20,26 @@
 
 /* Sidebar Menu Item */
 .sidebar-menu li {
-    border-bottom: 1px solid #2C3E50; /* Border lebih halus */
+    border-bottom: 1px solid #2C3E50; 
 }
 
 /* Sidebar Menu Link */
 .sidebar-menu a {
     display: block;
     padding: 15px 20px;
-    color: #ecf0f1; /* Warna Teks yang lebih terang */
+    color: #ecf0f1; 
     text-decoration: none;
-    font-weight: 500; /* Sedikit lebih tebal untuk memberi kesan profesional */
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
 /* Sidebar Menu Link Hover / Active */
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
+    transform: scale(1.1);
     background-color: #61A5D4;
     color: white;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /* Sidebar Menu Icons */

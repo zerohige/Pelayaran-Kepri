@@ -1,5 +1,4 @@
 <?php
-// pilih_kapal.php - Halaman pemilihan kapal (Updated with schedule integration)
 require_once '../../controller/db_connection.php';
 
 // Pastikan semua parameter ada

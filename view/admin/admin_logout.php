@@ -1,5 +1,4 @@
 <?php
-// admin_logout.php - Logout admin
 session_start();
 
 // Hapus semua session

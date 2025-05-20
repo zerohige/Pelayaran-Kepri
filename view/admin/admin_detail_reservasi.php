@@ -1,5 +1,4 @@
 <?php
-// admin_detail_reservasi.php - Detail reservasi
 session_start();
 require_once '../../controller/db_connection.php';
 
@@ -89,10 +88,10 @@ if (isset($_GET['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Reservasi - Admin Pelayaran Kepri</title>
-    <link rel="stylesheet" href="../../css/admin_detail_reservasi.css">
-</head>
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/admin_detail_reservasi.css">
+</head>
 <body>
     <!-- Header -->
     <div class="header">

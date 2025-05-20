@@ -1,5 +1,4 @@
 <?php
-// konfirmasi.php - Halaman konfirmasi pesanan (Updated)
 require_once '../../controller/db_connection.php';
 
 // Start session

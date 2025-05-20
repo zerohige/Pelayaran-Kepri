@@ -1,5 +1,4 @@
 <?php
-// admin_laporan.php - Halaman laporan
 session_start();
 require_once '../../controller/db_connection.php';
 
@@ -89,10 +88,10 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laporan - Admin Pelayaran Kepri</title>
-    <link rel="stylesheet" href="../../css/admin_laporan.css">
-</head>
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/admin_laporan.css">
+</head>
 <body>
     <!-- Header -->
     <div class="header">

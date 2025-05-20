@@ -1,5 +1,4 @@
 <?php
-// cek_reservasi.php - Halaman cek reservasi
 require_once '../../controller/db_connection.php';
 
 $reservation = null;

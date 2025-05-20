@@ -1,5 +1,4 @@
 <?php
-// admin_jadwal.php - Halaman kelola jadwal kapal
 session_start();
 require_once '../../controller/db_connection.php';
 
@@ -105,10 +104,10 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Jadwal Kapal - Admin Pelayaran Kepri</title>
-    <link rel="stylesheet" href="../../css/admin_jadwal.css">
-</head>
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/admin_jadwal.css">
+</head>
 <body>
     <!-- Header -->
     <div class="header">

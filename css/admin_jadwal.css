@@ -131,8 +131,14 @@ body {
 }
 
 .btn-delete {
+    text-align: center;
     background-color: #dc3545;
     color: white;
+    transition: transform 0.2s ease; 
+}
+
+.btn-delete:hover{
+    transform: scale(1.1);
 }
 
 .status-badge {

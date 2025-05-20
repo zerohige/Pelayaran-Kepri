@@ -133,14 +133,26 @@ body {
     display: inline-block;
 }
 
+.btn-detail,
+.btn-delete {
+    min-width: 35px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+}
+
 .btn-detail {
     background-color: #17a2b8;
-    color: white;
 }
 
 .btn-delete {
     background-color: #dc3545;
-    color: white;
+}
+
+.btn-detail:hover,
+.btn-delete:hover {
+    transform: scale(1.1);
 }
 
 .status-badge {

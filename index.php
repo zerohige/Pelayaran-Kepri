@@ -1,5 +1,4 @@
 <?php
-// index.php - Halaman pemilihan lokasi
 require_once 'controller/db_connection.php';
 
 // Fetch locations from database

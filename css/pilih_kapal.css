@@ -1,14 +1,13 @@
-/* Progress Container */
 .progress-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 600px; /* Memperbesar lebar maksimal */
-    margin: 24px 0; /* Memperbesar margin atas dan bawah */
+    max-width: 600px; 
+    margin: 24px 0; 
     background-color: white;
     border-radius: 25px;
-    padding: 18px; /* Memperbesar padding */
+    padding: 18px; 
 }
 
 /* Progress Step */
@@ -21,16 +20,16 @@
 
 /* Step Circle */
 .step-circle {
-    width: 36px; /* Memperbesar ukuran lingkaran */
+    width: 36px; 
     height: 36px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 8px; /* Memperbesar jarak bawah */
+    margin-bottom: 8px; 
     font-weight: bold;
     color: white;
-    font-size: 18px; /* Memperbesar ukuran font */
+    font-size: 18px; 
 }
 
 /* Active Step */
@@ -45,27 +44,27 @@
 
 /* Step Text */
 .step-text {
-    font-size: 16px; /* Memperbesar ukuran font teks langkah */
+    font-size: 16px; 
     color: #666;
 }
 
 /* Progress Line */
 .progress-line {
-    height: 4px; /* Memperbesar ketebalan garis progress */
+    height: 4px; 
     background-color: #ccc;
     flex: 1;
-    margin: 0 10px; /* Memperbesar jarak antara garis dan langkah */
+    margin: 0 10px; 
 }
 
 /* Content Container */
 .content-container {
     width: 90%;
-    max-width: 600px; /* Memperbesar lebar maksimal */
+    max-width: 600px; 
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 24px; /* Memperbesar padding */
-    margin-bottom: 24px; /* Memperbesar jarak bawah */
+    padding: 24px; 
+    margin-bottom: 24px; 
 }
 
 /* Content Title */
@@ -74,20 +73,20 @@
     font-weight: bold;
     color: white;
     background-color: #0a2259;
-    padding: 12px; /* Memperbesar padding */
+    padding: 12px; 
     border-radius: 5px;
-    margin-bottom: 24px; /* Memperbesar jarak bawah */
-    font-size: 30px; /* Memperbesar ukuran font */
+    margin-bottom: 24px; 
+    font-size: 30px; 
 }
 
 /* Error Container */
 .error-container {
     text-align: center;
-    padding: 36px; /* Memperbesar padding */
+    padding: 36px; 
 }
 
 .error-icon {
-    font-size: 72px; /* Memperbesar ukuran ikon error */
+    font-size: 72px; 
     color: #dc3545;
     margin-bottom: 24px;
 }
@@ -96,17 +95,17 @@
     color: #721c24;
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
-    padding: 20px; /* Memperbesar padding pesan error */
+    padding: 20px; 
     border-radius: 5px;
-    margin-bottom: 24px; /* Memperbesar jarak bawah pesan error */
-    font-size: 20px; /* Memperbesar ukuran font pesan error */
+    margin-bottom: 24px; 
+    font-size: 20px; 
 }
 
 /* Ship Options */
 .ship-options {
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Memperbesar jarak antar opsi kapal */
+    gap: 18px; 
 }
 
 /* Ship Option */
@@ -116,10 +115,10 @@
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 18px; /* Memperbesar padding */
+    padding: 18px; 
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 18px; /* Memperbesar ukuran font */
+    font-size: 18px; 
 }
 
 .ship-option:hover {
@@ -137,18 +136,18 @@
 
 .ship-name {
     font-weight: bold;
-    margin-bottom: 8px; /* Memperbesar jarak bawah nama kapal */
+    margin-bottom: 8px; 
 }
 
 .ship-time {
-    font-size: 16px; /* Memperbesar ukuran font waktu */
+    font-size: 16px; 
     color: #666;
 }
 
 .ship-price {
     font-weight: bold;
     color: #0a2259;
-    font-size: 20px; /* Memperbesar ukuran font harga */
+    font-size: 20px;
 }
 
 /* Submit Button */
@@ -156,13 +155,13 @@
     background-color: #0a2259;
     color: white;
     border: none;
-    padding: 16px 24px; /* Memperbesar padding tombol */
-    border-radius: 25px; /* Memperbesar radius tombol */
-    font-size: 20px; /* Memperbesar ukuran font tombol */
+    padding: 16px 24px; 
+    border-radius: 25px; 
+    font-size: 20px; 
     font-weight: bold;
     cursor: pointer;
     float: right;
-    margin-top: 24px; /* Memperbesar jarak atas tombol */
+    margin-top: 24px; 
 }
 
 /* Submit Button Hover Effect */
@@ -180,7 +179,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    align-items: center; /* Agar link berada di tengah */
+    align-items: center; 
     margin-top: 24px;
 }
 

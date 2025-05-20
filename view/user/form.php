@@ -1,5 +1,4 @@
 <?php
-// form.php - Halaman form reservasi
 require_once '../../controller/db_connection.php';
 
 // Pastikan parameter lokasi ada

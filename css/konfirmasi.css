@@ -1,14 +1,13 @@
-/* Progress Indicator */
 .progress-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
-    max-width: 600px; /* Memperbesar lebar maksimal */
-    margin: 24px 0; /* Memperbesar margin atas dan bawah */
+    max-width: 600px; 
+    margin: 24px 0; 
     background-color: white;
     border-radius: 25px;
-    padding: 18px; /* Memperbesar padding */
+    padding: 18px;
 }
 
 /* Progress Step */
@@ -21,16 +20,16 @@
 
 /* Step Circle */
 .step-circle {
-    width: 36px; /* Memperbesar ukuran lingkaran */
+    width: 36px; 
     height: 36px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 8px; /* Memperbesar jarak bawah */
+    margin-bottom: 8px;
     font-weight: bold;
     color: white;
-    font-size: 18px; /* Memperbesar ukuran font */
+    font-size: 18px; 
 }
 
 /* Active Step */
@@ -45,16 +44,16 @@
 
 /* Step Text */
 .step-text {
-    font-size: 16px; /* Memperbesar ukuran font teks langkah */
+    font-size: 16px; 
     color: #666;
 }
 
 /* Progress Line */
 .progress-line {
-    height: 4px; /* Memperbesar ketebalan garis progress */
-    background-color: #ccc;
+    height: 4px; 
+    background-color: #0a2259;
     flex: 1;
-    margin: 0 10px; /* Memperbesar jarak antara garis dan langkah */
+    margin: 0 10px; 
 }
 
 /* Content Container */

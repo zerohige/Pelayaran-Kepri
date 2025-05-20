@@ -1,5 +1,4 @@
 <?php
-// isi_data.php - Halaman pengisian data penumpang
 require_once '../../controller/db_connection.php';
 
 // Start session
@@ -99,7 +98,7 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
             <div class="step-circle step-active">1</div>
             <div class="step-text">Pilih Kapal</div>
         </div>
-        <div class="progress-line"></div>
+        <div class="progress-line" id="line-1"></div>
         <div class="progress-step">
             <div class="step-circle step-active">2</div>
             <div class="step-text">Isi Data</div>

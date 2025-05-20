@@ -50,4 +50,9 @@
     border-radius: 5px;
     text-decoration: none;
     font-size: 14px;
+    transition: background-color 0.1s ease;
+}
+
+.logout-btn:hover {
+    background-color: #61A5D4;
 }

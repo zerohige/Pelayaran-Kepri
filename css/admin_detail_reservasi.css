@@ -144,6 +144,8 @@ body {
     cursor: pointer;
     font-weight: bold;
     margin: 5px;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .delete-btn {

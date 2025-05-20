@@ -1,5 +1,4 @@
 <?php
-// admin.php - Halaman login admin
 session_start();
 require_once '../../controller/db_connection.php';
 

@@ -1,5 +1,4 @@
 <?php
-// admin_dashboard.php - Dashboard admin (Fixed)
 session_start();
 require_once '../../controller/db_connection.php';
 
@@ -65,11 +64,10 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Pelayaran Kepri</title>
-    <link rel="stylesheet" href="../../css/admin_dashboard.css">
-</head>
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/header.css">
-
+    <link rel="stylesheet" href="../../css/admin_dashboard.css">
+</head>
 <body>
     <!-- Header -->
     <div class="header">
