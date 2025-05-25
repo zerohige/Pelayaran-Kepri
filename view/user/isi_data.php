@@ -152,7 +152,10 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
                     <input type="tel" id="no_telepon" name="no_telepon" value="<?php echo isset($data_penumpang[$current_passenger]['telepon']) ? htmlspecialchars($data_penumpang[$current_passenger]['telepon']) : ''; ?>" 
                         pattern="\d{10,12}" 
                         title="Nomor telepon harus terdiri dari 10 hingga 12 digit angka" 
-                        required>
+                        required
+                        maxlength="13"
+                        inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
 
                 <button type="submit" class="submit-btn">SELESAI</button>
