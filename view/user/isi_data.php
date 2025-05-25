@@ -141,7 +141,9 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
                         pattern="\d{16}" 
                         title="Nomor KTP harus terdiri dari 16 digit angka" 
                         required
-                        maxlength="16">
+                        maxlength="16"
+                        inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
 
                 <!-- Form for HP -->
