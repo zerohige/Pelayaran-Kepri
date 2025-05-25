@@ -155,7 +155,7 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
                 <!-- Form for HP -->
                 <div class="form-group">
                     <label for="no_telepon">No. Telepon :</label>
-                    <input type="tel" id="no_telepon" name="no_telepon" value="<?php echo isset($data_penumpang[$current_passenger]['telepon']) ? htmlspecialchars($data_penumpang[$current_passenger]['telepon']) : ''; ?>" 
+                    <input type="text" id="no_telepon" name="no_telepon" value="<?php echo isset($data_penumpang[$current_passenger]['telepon']) ? htmlspecialchars($data_penumpang[$current_passenger]['telepon']) : ''; ?>" 
                         pattern="\d{10,12}" 
                         title="Nomor telepon harus terdiri dari 10 hingga 12 digit angka" 
                         required
