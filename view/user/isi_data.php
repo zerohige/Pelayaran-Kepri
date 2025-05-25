@@ -140,7 +140,8 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
                     <input type="text" id="no_ktp" name="no_ktp" value="<?php echo isset($data_penumpang[$current_passenger]['no_ktp']) ? htmlspecialchars($data_penumpang[$current_passenger]['no_ktp']) : ''; ?>" 
                         pattern="\d{16}" 
                         title="Nomor KTP harus terdiri dari 16 digit angka" 
-                        required>
+                        required
+                        maxlength="16">
                 </div>
 
                 <!-- Form for HP -->
