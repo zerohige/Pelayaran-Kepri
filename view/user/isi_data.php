@@ -38,11 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($nama)) {
         $errors[] = "Nama lengkap harus diisi";
     }
+    // Validasi No. KTP
     if (empty($no_ktp)) {
         $errors[] = "Nomor KTP harus diisi";
+    } elseif (!preg_match('/^\d{16}$/', $no_ktp)) { // Pastikan hanya 16 digit angka
+        $errors[] = "Nomor KTP harus terdiri dari 16 digit angka";
     }
+    // Validasi No. Telepon
     if (empty($no_telepon)) {
         $errors[] = "Nomor telepon harus diisi";
+    } elseif (!preg_match('/^\d{10,13}$/', $no_telepon)) { // Sesuaikan panjangnya jika perlu (misal, 10-13 digit angka)
+        $errors[] = "Nomor telepon harus valid dan terdiri dari 10 hingga 13 digit angka";
     }
 
     // Jika tidak ada error, simpan data penumpang
