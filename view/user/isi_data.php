@@ -38,11 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($nama)) {
         $errors[] = "Nama lengkap harus diisi";
     }
+    // Validasi No. KTP
     if (empty($no_ktp)) {
         $errors[] = "Nomor KTP harus diisi";
+    } elseif (!preg_match('/^\d{16}$/', $no_ktp)) {
+        $errors[] = "Nomor KTP harus terdiri dari 16 digit angka";
     }
+    // Validasi No. Telepon
     if (empty($no_telepon)) {
         $errors[] = "Nomor telepon harus diisi";
+    } elseif (!preg_match('/^\d{10,13}$/', $no_telepon)) {
+        $errors[] = "Nomor telepon harus valid dan terdiri dari 10 hingga 13 digit angka";
     }
 
     // Jika tidak ada error, simpan data penumpang
@@ -53,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'no_ktp' => $no_ktp,
             'telepon' => $no_telepon
         ];
-        
+
         // Jika masih ada penumpang yang perlu diisi
         if ($current_passenger < $penumpang) {
             // Redirect ke penumpang berikutnya
-            header('Location: isi_data.php?passenger='.($current_passenger + 1));
+            header('Location: isi_data.php?passenger=' . ($current_passenger + 1));
             exit;
         } else {
             // Semua penumpang sudah diisi, redirect ke konfirmasi
@@ -74,6 +80,7 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,6 +88,7 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/isi_data.css">
 </head>
+
 <body>
     <!-- Header with Logo -->
     <div class="header">
@@ -116,7 +124,7 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
     <!-- Content Container -->
     <div class="content-container">
         <div class="passenger-header">Data Penumpang <?php echo $current_passenger; ?></div>
-        
+
         <div class="form-container">
             <?php if (!empty($errors)): ?>
                 <div class="error-message">
@@ -127,34 +135,40 @@ $data_penumpang = $_SESSION['temp_booking']['passengers'] ?? [];
                     </ul>
                 </div>
             <?php endif; ?>
-            
+
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="nama">Nama Lengkap Sesuai KTP :</label>
-                    <input type="text" id="nama" name="nama" value="<?php echo isset($data_penumpang[$current_passenger]['nama']) ? htmlspecialchars($data_penumpang[$current_passenger]['nama']) : ''; ?>">
+                    <input type="text" id="nama" name="nama" value="<?php echo isset($data_penumpang[$current_passenger]['nama']) ? htmlspecialchars($data_penumpang[$current_passenger]['nama']) : ''; ?>" required>
                 </div>
-                
-                <!-- Form for KTP -->
+
                 <div class="form-group">
                     <label for="no_ktp">No. KTP :</label>
-                    <input type="text" id="no_ktp" name="no_ktp" value="<?php echo isset($data_penumpang[$current_passenger]['no_ktp']) ? htmlspecialchars($data_penumpang[$current_passenger]['no_ktp']) : ''; ?>" 
-                        pattern="\d{16}" 
-                        title="Nomor KTP harus terdiri dari 16 digit angka" 
-                        required>
+                    <input type="text" id="no_ktp" name="no_ktp" value="<?php echo isset($data_penumpang[$current_passenger]['no_ktp']) ? htmlspecialchars($data_penumpang[$current_passenger]['no_ktp']) : ''; ?>"
+                        pattern="\d{16}"
+                        title="Nomor KTP harus terdiri dari 16 digit angka"
+                        required
+                        maxlength="16"
+                        inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
 
                 <!-- Form for HP -->
                 <div class="form-group">
                     <label for="no_telepon">No. Telepon :</label>
-                    <input type="tel" id="no_telepon" name="no_telepon" value="<?php echo isset($data_penumpang[$current_passenger]['telepon']) ? htmlspecialchars($data_penumpang[$current_passenger]['telepon']) : ''; ?>" 
-                        pattern="\d{10,12}" 
-                        title="Nomor telepon harus terdiri dari 10 hingga 12 digit angka" 
-                        required>
+                    <input type="text" id="no_telepon" name="no_telepon" value="<?php echo isset($data_penumpang[$current_passenger]['telepon']) ? htmlspecialchars($data_penumpang[$current_passenger]['telepon']) : ''; ?>"
+                        pattern="\d{10,13}"
+                        title="Nomor telepon harus terdiri dari 10 hingga 13 digit angka"
+                        required
+                        maxlength="13"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
 
                 <button type="submit" class="submit-btn">SELESAI</button>
             </form>
         </div>
     </div>
+
 </body>
+
 </html>
